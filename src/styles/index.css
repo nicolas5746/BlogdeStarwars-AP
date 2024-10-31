@@ -1,0 +1,18 @@
+.card {
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-outline-warning {
+    border-color: #ffc107;
+    color: #ffc107;
+    margin-left: 10px;
+}
+
+.btn-outline-warning:active {
+    box-shadow: 0 0 15px #ffc107;
+}
+
+.favorites-item:hover {
+    text-decoration: underline;
+}
