@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import AddButton from "./addButton";
 
 const CharCard = ({ character, onFavoriteClick }) => {
+    // URL base para imagen
+    const IMG_BASE_URL = "https://starwars-visualguide.com/assets/img/characters/";
     // Detalles del personaje traidos por Id
     const [details, setDetails] = useState([]);
     // Traer datos de todos los personajes
@@ -16,7 +18,7 @@ const CharCard = ({ character, onFavoriteClick }) => {
 
     return (
         <Card>
-            <Card.Img src="https://via.placeholder.com/400x200" alt={details.name} variant="top" />
+            <Card.Img src={`${IMG_BASE_URL}${character.uid}.jpg`} alt={details.name} variant="top" />
             <Card.Body>
                 <Card.Title>{details.name}</Card.Title>
                 <Card.Text>

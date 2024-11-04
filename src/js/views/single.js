@@ -6,7 +6,8 @@ import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
 
 const Single = () => {
-
+    
+    const IMG_BASE_URL = "https://starwars-visualguide.com/assets/img/characters/"; // URL base para imagen
     const [details, setDetails] = useState([]); // Detalles del personaje traido por Id 
     const { store } = useContext(Context); // Acceder a los datos almacenados
     const { id } = useParams(); // Parametro dinamico
@@ -17,10 +18,10 @@ const Single = () => {
 
     return (
         <Card>
-            {store.characters.filter((item) => item.uid == id).map((item, index) =>
+            {store.characters.filter((item) => item.uid === id).map((item, index) =>
             (<React.Fragment key={index}>
                 <div className="container-fluid d-flex flex-row justify-content-around">
-                    <Card.Img src="https://via.placeholder.com/800x600" alt="" />
+                    <Card.Img src={`${IMG_BASE_URL}${id}.jpg`} alt="" />
                     <Card.Body className="text-center">
                         <Card.Title>{item.name}</Card.Title>
                         <Card.Text>

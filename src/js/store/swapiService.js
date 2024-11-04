@@ -44,3 +44,13 @@ export const fetchItemById = async (subdir, id, state) => {
         throw error;
     }
 };
+// Funcion para checkear el estado de la url
+export const checkUrlStatus = async (url, state) => {
+    try {
+        const response = await fetch(url);
+        return state(response.status); // Retorna status y lo almacena dentro de un estado
+    } catch (error) {
+        console.error("Error fetching url:", error);
+        throw error;
+    }
+}

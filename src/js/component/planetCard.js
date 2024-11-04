@@ -1,22 +1,25 @@
 // CharCard.js
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchItemById } from "../store/swapiService";
+import { fetchItemById, checkUrlStatus } from "../store/swapiService";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import AddButton from "./addButton";
 
 const PlanetCard = ({ planet, onFavoriteClick }) => {
-    // Detalles del planeta traidos por Id
-    const [details, setDetails] = useState([]);
+    
+    const IMG_BASE_URL = "https://starwars-visualguide.com/assets/img/planets/"; // URL base para imagen
+    const [details, setDetails] = useState([]); // Detalles del planeta traidos por Id
+    const [urlStatus, setUrlStatus] = useState(''); // status del enlace
     // Traer datos de todos los planetas
     useEffect(() => {
         fetchItemById('planets', planet.uid, setDetails);
+        checkUrlStatus(`${IMG_BASE_URL}${planet.uid}.jpg`, setUrlStatus);
     }, []);
 
     return (
         <Card>
-            <Card.Img src="https://via.placeholder.com/400x200" alt={details.name} variant="top" />
+            <Card.Img src={urlStatus !== 404 ? `${IMG_BASE_URL}${planet.uid}.jpg` : `https://starwars-visualguide.com/assets/img/placeholder.jpg`} alt={details.name} variant="top" />
             <Card.Body>
                 <Card.Title>{details.name}</Card.Title>
                 <Card.Text>
