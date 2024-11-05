@@ -21,10 +21,10 @@ const PlanetCard = ({ planet, onFavoriteClick }) => {
         <Card>
             <Card.Img src={urlStatus !== 404 ? `${IMG_BASE_URL}${planet.uid}.jpg` : `https://starwars-visualguide.com/assets/img/placeholder.jpg`} alt={details.name} variant="top" />
             <Card.Body>
-                <Card.Title>{details.name}</Card.Title>
+                <Card.Title>{details.properties?.name}</Card.Title>
                 <Card.Text>
-                    <strong>Population:&nbsp;</strong>{details.population || "n/a"}<br />
-                    <strong>Terrain:&nbsp;</strong>{details.terrain || "n/a"}
+                    <strong>Population:&nbsp;</strong>{details.properties?.population || "n/a"}<br />
+                    <strong>Terrain:&nbsp;</strong>{details.properties?.terrain || "n/a"}
                 </Card.Text>
                 <Link to={`/planet_details/${planet.uid}`} aria-label='planet-uid'>
                     <Button variant="outline-primary">Learn more!</Button>

@@ -38,7 +38,7 @@ export const fetchItemById = async (subdir, id, state) => {
     try {
         const response = await fetch(`${BASE_URL}${subdir}/${id}`);
         const data = await response.json();
-        return state(data.result.properties); // Retorna detalles del item y lo almacena dentro de un estado
+        return state(data.result); // Retorna detalles del item y lo almacena dentro de un estado
     } catch (error) {
         console.error("Error fetching data:", error);
         throw error;

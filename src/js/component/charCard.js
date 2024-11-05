@@ -20,11 +20,11 @@ const CharCard = ({ character, onFavoriteClick }) => {
         <Card>
             <Card.Img src={`${IMG_BASE_URL}${character.uid}.jpg`} alt={details.name} variant="top" />
             <Card.Body>
-                <Card.Title>{details.name}</Card.Title>
+                <Card.Title>{details.properties?.name}</Card.Title>
                 <Card.Text>
-                    <strong>Gender:&nbsp;</strong>{details.gender || "n/a"}<br />
-                    <strong>Hair Color:&nbsp;</strong>{details.hair_color || "n/a"}<br />
-                    <strong>Eye Color:&nbsp;</strong>{details.eye_color || "n/a"}
+                    <strong>Gender:&nbsp;</strong>{details.properties?.gender || "n/a"}<br />
+                    <strong>Hair Color:&nbsp;</strong>{details.properties?.hair_color || "n/a"}<br />
+                    <strong>Eye Color:&nbsp;</strong>{details.properties?.eye_color || "n/a"}
                 </Card.Text>
                 <Link to={`/details/${character.uid}`} aria-label='character-uid'>
                     <Button variant="outline-primary">Learn more!</Button>
