@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-const AddButton = ({ data, subdir, onFavoriteClick }) => {
+export const AddItem = ({ data, subdir, onFavoriteClick }) => {
 
     const [mouse, setMouse] = useState({ active: false, hover: false }); // Estados del mouse
     const [iconClass, setIconClass] = useState('far text-warning'); // Clase de estilos del icono favoritos
@@ -36,4 +37,10 @@ const AddButton = ({ data, subdir, onFavoriteClick }) => {
     );
 };
 
-export default AddButton;
+export const LearnMore = ({ data, subdir }) => {
+    return (
+        <Link to={`/${subdir}/${data.uid}`} aria-label={`${data}-id`}>
+            <Button variant="outline-primary">Learn more!</Button>
+        </Link>
+    );
+};

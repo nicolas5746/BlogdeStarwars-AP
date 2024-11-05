@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchItemById, checkUrlStatus } from "../store/swapiService";
-import { Context } from "../store/appContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchItemById, checkUrlStatus } from '../store/swapiService';
+import { AppContext } from '../contexts/Contexts';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
 
-const Single = () => {
+const Character = () => {
 
     const IMG_BASE_URL = "https://starwars-visualguide.com/assets/img/characters/"; // URL base para imagen
     const [details, setDetails] = useState([]); // Detalles del personaje traido por Id 
     const [urlStatus, setUrlStatus] = useState(''); // status del enlace
-    const { store } = useContext(Context); // Acceder a los datos almacenados
+    const { store } = useContext(AppContext); // Acceder a los datos almacenados
     const { id } = useParams(); // Parametro dinamico
     // Traer datos de todos los personajes
     useEffect(() => {
@@ -27,8 +27,8 @@ const Single = () => {
                     <div className="container-fluid d-flex flex-row justify-content-around">
                         <Card.Img
                             alt={details.properties?.name}
-                            src={urlStatus !== 404 ? `${IMG_BASE_URL}${id}.jpg` : `https://starwars-visualguide.com/assets/img/placeholder.jpg`}
-                            style={{ height: '70vh', width: '30vw' }}
+                            src={urlStatus < 400 ? `${IMG_BASE_URL}${id}.jpg` : `https://starwars-visualguide.com/assets/img/placeholder.jpg`}
+                            style={{ height: '50%', width: '25%' }}
                             title={details.properties?.name}
                         />
                         <Card.Body className="text-center">
@@ -62,4 +62,4 @@ const Single = () => {
     );
 };
 
-export default Single;
+export default Character;

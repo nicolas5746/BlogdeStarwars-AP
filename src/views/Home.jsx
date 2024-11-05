@@ -1,11 +1,10 @@
-import React, { useEffect, useContext } from "react";
-import CharCard from "../component/charCard"; // Componente para personajes
-import PlanetCard from "../component/planetCard"; // Componente para planetas
-import { Context } from "../store/appContext";
-import { useFavorites } from "../store/FavoritesContext";
+import React, { useEffect, useContext } from 'react';
+import Card from '../components/Card'; // Componente para personajes
+import { AppContext, useFavorites } from '../contexts/Contexts';
+import { CharacterProperties, PlanetProperties } from '../components/Properties';
 
 const Home = () => {
-    const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(AppContext);
     const { addFavorite, favorites } = useFavorites(); // Accede a los favoritos desde el contexto
 
     useEffect(() => {
@@ -27,9 +26,13 @@ const Home = () => {
                 {store.characters && store.characters.length > 0 ? (
                     store.characters.map((character) => (
                         <div key={character.uid} className="col-md-4 mx-3">
-                            <CharCard
-                                character={character}
+                            <Card
+                                data={character}
+                                detailsSubdir="details"
+                                imgSubdir="characters"
                                 onFavoriteClick={handleFavoriteClick}
+                                properties={CharacterProperties}
+                                type="people"
                             />
                         </div>)))
                     :
@@ -41,9 +44,13 @@ const Home = () => {
                 {store.planets && store.planets.length > 0 ? (
                     store.planets.map((planet) => (
                         <div key={planet.uid} className="col-md-4 mx-3">
-                            <PlanetCard
-                                planet={planet}
+                            <Card
+                                data={planet}
+                                detailsSubdir="planet_details"
+                                imgSubdir="planets"
                                 onFavoriteClick={handleFavoriteClick}
+                                properties={PlanetProperties}
+                                type="planets"
                             />
                         </div>)))
                     :

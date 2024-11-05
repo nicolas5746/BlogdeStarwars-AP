@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useFavorites } from "../store/FavoritesContext"; // Asegúrate de que la ruta es correcta
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFavorites } from '../../contexts/Contexts'; // Asegúrate de que la ruta es correcta
 import { default as Nav } from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -31,7 +31,7 @@ const Navbar = () => {
             <div className="container-fluid d-flex flex-row justify-content-around">
                 <Link className="navbar-brand" to="/">
                     <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
+                        src="https://res.cloudinary.com/dmnyy2q99/image/upload/v1730817817/logo_vwf6cn.png"
                         alt="Star Wars"
                         width="100"
                     />
@@ -42,11 +42,11 @@ const Navbar = () => {
                         <Badge bg="secondary">{favorites.length}</Badge>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="text-center">
-                        {favorites.length > 0 ? favorites.map((fav, index) =>
+                        {favorites.length > 0 ? favorites.map((favorite, index) =>
                         (<Dropdown.Item className="bg-white text-primary" key={index}>
-                            <span className="favorites-item" onClick={() => onClick(fav.subdir, fav.uid)}>{fav.name}</span>
+                            <span className="favorites-item" onClick={() => onClick(favorite.subdir, favorite.uid)}>{favorite.name}</span>
                             <span>&nbsp;</span>
-                            <i className="fa fa-trash text-dark" aria-hidden="true" onClick={() => removeFavorite(fav.name)}></i>
+                            <i className="fa fa-trash text-dark" aria-hidden="true" onClick={() => removeFavorite(favorite.name)}></i>
                         </Dropdown.Item>))
                             :
                             <Dropdown.Item className="bg-white text-dark fw-bold">(empty)</Dropdown.Item>}

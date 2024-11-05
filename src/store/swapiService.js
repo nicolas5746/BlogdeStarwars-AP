@@ -1,6 +1,6 @@
 // store/swapiService.js
 
-const BASE_URL = "https://www.swapi.tech/api/";
+const BASE_URL = `https://www.swapi.tech/api/`;
 
 export const fetchPlanets = async () => {
     try {

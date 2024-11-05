@@ -1,12 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { FavoritesContext } from '../contexts/Contexts';
 
-const FavoritesContext = createContext();
-
-export const useFavorites = () => {
-    return useContext(FavoritesContext);
-};
-
-export const FavoritesProvider = ({ children }) => {
+const FavoritesProvider = ({ children }) => {
     const [favorites, setFavorites] = useState(() => {
         // Cargar favoritos desde localStorage si están disponibles
         const storedFavorites = localStorage.getItem('favorites');
@@ -35,3 +30,5 @@ export const FavoritesProvider = ({ children }) => {
         </FavoritesContext.Provider>
     );
 };
+
+export default FavoritesProvider;

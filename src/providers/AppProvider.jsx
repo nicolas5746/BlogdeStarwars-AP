@@ -1,10 +1,8 @@
-// appContext.js
-import React, { createContext, useState } from 'react';
-import getState from './flux';
+import React, { useState } from 'react';
+import { AppContext } from '../contexts/Contexts';
+import getState from '../store/flux';
 
-export const Context = createContext();
-
-export const AppContextProvider = ({ children }) => {
+const AppProvider = ({ children }) => {
     const [store, setStore] = useState({
         characters: [],
         vehicles: [],
@@ -15,14 +13,10 @@ export const AppContextProvider = ({ children }) => {
     const actions = getState({ getStore: () => store, getActions: () => actions, setStore }).actions;
 
     return (
-        <Context.Provider value={{ store, actions }}>
+        <AppContext.Provider value={{ store, actions }}>
             {children}
-        </Context.Provider>
+        </AppContext.Provider>
     );
 };
 
-
-
-
-
-
+export default AppProvider;
